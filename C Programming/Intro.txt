@@ -1,0 +1,136 @@
+FOunder of C language: Dennis Ritchie
+
+Why C language: C teaches how computers REALLY work (low-level understanding). Python/JS hide everything behind abstractions.
+
+But C shows you:
+memory kaise allocate hoti hai
+stack/heap kya hota hai
+pointers kaise kaam karte hain
+CPU instructions kaise indirectly run hote hain
+how data is stored in bytes
+how operating systems talk to hardware
+This level ka understanding sirf C deta hai, Python and JS don’t.
+
+Bahut languages C ke concepts se bani hain:
+C → C++
+C → Java (syntax + memory model)
+C → Python (written mostly in C)
+C → JavaScript engines (V8 also written in C++)
+C → Rust, Golang (influenced heavily by C)
+
+Koi bhi performance-critical system me high-level languages kaam nahi karti.
+Examples:
+Linux kernel → C
+Windows OS core → C
+MacOS kernel → C
+Device drivers → C
+Microcontrollers/Embedded → C
+Network protocols → C
+
+C builds Problem-Solving and Logic at a Core Level
+Python easy hai because:
+no memory management
+no data type strictness
+simple loops
+auto garbage collection
+
+But C forces you to think like an engineer:
+efficient logic
+memory-safe code
+manual resource management
+strict syntax discipline
+
+
+Different types of data types:
+
+Primitive -> Int, Float, Char, Void
+Derived -> Array, Pointers, Strings
+User Defined Data types -> Structure, Union, Enum, Typedef
+
+Integer -> short, int, long int, long long int
+Floating -> float, double, long double
+
+Integer (i.e short, int, long int, long long int) -> are of 2 types signed (can be positive and negative) and unsigned only positive.
+
+Char inside the single quotes.
+
+1 bit: 2^1 = 2 possibility of 0/1
+2 bit: 2^2 = 4 possibility
+3 bit: 2^3 = 8 possibility
+8 bit (or 1 byte): 2^8 = 256 possibility
+
+Basically , data type hume 2 chheze batata hai :
+1) Memory allocated (i.e 1 bit, 2 bit, 8bit(or 1 byte))
+2) range of values we can store in the variable
+
+C standard does not specify how many bits or how many bytes to be allocated for every data type.
+
+Ranges:
+n bit : 2^n
+unsigned: 0 to 2^n -1
+signed : -2^(n-1) to 2^(n-1) - 1
+
+
+Format Specifier:
+short i = 10;
+printf("%d",i) => %d here is format specifier for the signed integers/number. ye bolta hai ki yaha pe ek integer value aayega. and i yaha specify karega us memory location ko jaha se vo integer aaeyga.
+means print karo ek integer from the i location in memory. d means decimal format wali values.
+
+%c -> character, %f -> floating data type ke liye, %u -> unsigned integers
+
+Example:
+unsigned short int x =-3;
+printf("%u",x);
+
+Sol:
+Unsigned short = 16-bit type. Ranges(0 to 65535). So x = 65536 + (-3) = 65533.
+Unsigned number me negative value assign karte hi, compiler us value ko modulo 2^16 treat karta hai: -3 mod 65536 = 65533
+
+
+scanf() => to read input from keyboard.
+scanf("%d",&i) => iska matlab hua ki keyboard se input ko read karo and this will store the input field as of integer type and that value will be stored in the address of i.
+
+char datatype => 1 byte -> 8 bit -> 2^8 -> 256 possibility
+unsigned char : 0 to 255
+signed char: -128 to 127
+
+ASCII is American Standard Code for Information Interchange.
+
+It is a character encoding standard used to represent text in computers and electronic devices.
+ASCII assigns a unique numerical code to each character, including letters, numbers, punctuation marks, and control codes.
+The standard uses 7 bits to represent 128 characters, with the extended version using 8 bits to include an additional 128 characters.
+
+
+In C, char is 1 byte because the language was originally designed around the ASCII character set, which requires only 1 byte (8 bits) to store a character. The C standard also strictly defines that sizeof(char) must always be 1 byte, regardless of the system architecture. This makes character storage and string handling consistent across all platforms.
+
+If interviewer asks ‘Why 1 byte only?’ — Give 3 key points
+
+ASCII characters require only 1 byte
+→ 256 possible values (0–255)
+
+C standard guarantees sizeof(char) = 1
+→ Platform-independent behavior
+
+Smallest addressable memory unit = byte
+→ And char maps directly to that unit
+
+Example:
+char x = 65;
+printf("%d", x);
+
+char x = 65;
+char ek integer type hai (small integer), jisme numeric values store hoti hain.
+65 ASCII table me 'A' ka code hai.
+But printf me tumne %d use kiya hai
+→ %d integer ko print karta hai
+→ Isliye 65 print hoga.
+if %c was used then A gets printed.
+
+Example2:
+char x = 129;
+printf("%d", x);
+output: -127 according to cyclic way bcz by default it is signed char , so range is from 0 to 127 , so if we move in cyclic format , we need to move 2 times bcz 127+2 = 129 , so after 127 , we get -128 and then -127.
+
+Example3:
+char x = 258;
+printf("%d",x); => 2

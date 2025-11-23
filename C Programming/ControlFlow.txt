@@ -1,0 +1,55 @@
+Control flow Statements:
+1) Selection : if, if-else, else
+2) Iterative: Loops -> for, while, do while
+3) Jump Statements: break, continue, return
+
+
+for loop ke 3 parts hote hai:
+Initialization
+Condition
+Increment
+
+But tumne initialization ki jagah printf("Hello") likh diya hai.
+C me allowed hai — kyunki for ke 3 sections me koi bhi statement likh sakte ho.
+
+Example1:
+int i =1;
+for(printf("Hello");i<=2;i++){
+  printf("%d",i);
+}
+
+Output:Start hota hai → initialization run
+printf("Hello");
+Output: Hello
+
+बस! Yeh line dobara kabhi nahi chalegi.
+Now check condition (i = 1)
+1 <= 2 → TRUE
+Loop body run:
+printf("%d", 1);
+Output:Hello1
+
+Increment
+i = 2
+Check condition again
+2 <= 2 → TRUE
+Loop body:
+printf("%d", 2);
+Output:Hello12
+
+Increment
+i = 3
+Check
+3 <= 2 → FALSE
+Loop finished.
+⭐ Final Output (Correct)
+Hello12
+
+
+Example2:
+i = 1;
+for(  ; i<=3;printf("hi")){
+  printf("sir");
+}
+
+Output: an infinite loop of sirhi sirhi sirhi .... inifite

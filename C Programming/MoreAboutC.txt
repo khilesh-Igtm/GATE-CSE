@@ -1,0 +1,234 @@
+High-Level Language (HLL) kya hoti hai?
+Definition (Simple):
+
+Aisi language jisme code human-friendly hota hai
+aur machine ke kaise kaam karta uski tension nahi hoti.
+
+Examples:
+
+Python, JavaScript, Java, C#, Ruby, PHP, Go
+
+Features:
+English jaisa readable syntax
+Memory management automatic
+Garbage collection hota hai
+Developer productivity high
+Built-in library bahot saari
+Portability easy (ek code multiple OS me)
+Abstraction high (machine-level details hidden)
+
+
+Low-Level Language (LLL) kya hoti hai?
+Definition (Simple):
+
+Aisi language jo machine ke close hoti hai.
+Har cheez manually manage karna padta hai → memory, CPU instructions, etc.
+
+Types:
+Machine Language (0s and 1s) – pure hardware
+Assembly Language (mnemonics) – MOV, ADD, MUL
+C is not pure low-level—
+but C ko often low-level ke near bola jata hai → "middle-level language".
+
+Middle-Level Language (Like C)
+
+C ko middle-level bolte because:
+High-level features (functions, loops, variables)
+Low-level access (pointers, memory address, hardware access) 
+Isliye C is perfect mix.
+
+
+Main Components of a Computer
+
+A computer system 2 parts me divide hota hai:
+1️⃣ Hardware
+2️⃣ Software
+
+1. Hardware (Physical Parts)
+A. Input Devices
+Input devices wo hote hain jisse user data aur instructions computer ko deta hai.Input devices allow external data to enter the computer system.
+Keyboard
+Mouse
+Scanner
+Mic
+Webcam
+Touchscreen
+
+B. Output Devices
+Computer jo result deta hai, woh ye devices show karte hain.
+Monitor
+Printer
+Speaker
+Projector
+
+C. CPU (Central Processing Unit) – The Brain
+CPU 3 parts ka combination hai:
+
+1. ALU (Arithmetic Logic Unit)
+Ke kaam: calculation + logic. All actual calculations happen inside ALU.
+Examples: addition, subtraction, AND, OR, comparison
+
+2. CU (Control Unit)
+Flow control karta hai.CU acts like the traffic controller of the computer.Manages data flow between memory, ALU, I/O
+Instructions ko fetch, decode, execute karwata hai.
+
+3. Registers
+Super-fast temporary storage.Registers remove the delay of memory access and make execution faster.
+CPU ke andar hota hai.
+
+Why Registers are fast ?
+Registers CPU ke andar hote hain
+RAM CPU ke bahar motherboard par hoti hai.
+Waha tak signal ko jaana–aana padta hai → time lagta hai (nanoseconds).
+But registers CPU ke chip ke andar hoti hain.
+Zero travel distance → almost instant access.
+👉 Isliye register access fastest hota hai.
+
+
+D. Memory (Primary Memory)
+1. RAM (Random Access Memory)
+Temporary memory. RAM decides how many programs you can run at a time
+Programs running state me store hote hain
+Power off → data lost
+2. ROM (Read Only Memory)
+Permanent memory.System starts from ROM.
+Booting instructions stored (BIOS/UEFI)
+
+E. Secondary Storage
+Permanent storage.
+HDD
+SSD
+USB drive
+CD/DVD
+
+F. Motherboard
+Largest circuit board
+Sab components ko connect karta hai:
+CPU, RAM, storage, ports, power, GPU, etc.Motherboard is the backbone that connects all components
+
+G. GPU (Graphics Processing Unit)
+Images, video, gaming, ML tasks handle karta hai. GPU is specialized for massive parallel computations
+Example: NVIDIA, AMD GPUs
+CPU se zyda parallel computation karta hai.
+
+8. Power Supply Unit (PSU)
+AC → DC convert karta hai
+Saare components ko stable power deta hai
+“Without PSU, no component can run.”
+
+
+2. Software (Programs)
+A. System Software
+Hardware ko operate karne wala software
+Example:
+Operating System (Windows, Linux, macOS)
+Device drivers
+Firmware
+
+
+How a program runs in a computer
+1. You write a program (source code)
+int main() {
+    printf("Hello");
+}
+Ye code high-level language me hota hai jise machine samajh nahi sakti.
+
+2.Compiler converts it to machine code
+C me compiler (GCC/Clang) code ko teen stages me convert karta hai:
+🔹 A. Preprocessing
+#include resolve hota hai
+macros expand hote hain
+Output: expanded code
+
+🔹 B. Compilation
+High-level code → Assembly code
+(CPU-friendly instructions)
+
+🔹 C. Assembly → Machine Code
+Assembly → binary (0/1)
+Machine code = executable file (.exe or a.out)
+Now the program is ready for execution.
+
+Loader loads the program into RAM
+Program disk me pada hota hai.
+Run karte hi OS ka loader:
+program ko RAM me copy karta hai
+stack, heap, code segment, data segment set karta hai
+required libraries (printf, malloc) load karta hai
+ CPU ke liye RAM hi actual workspace hota hai.
+
+
+CPU starts executing code
+CPU execution follow karta hai:
+⭐ Fetch → Decode → Execute cycle
+🔹 A. Fetch
+CPU instruction pointer (Rip/EIP) se instruction read karta hai from RAM.
+🔹 B. Decode
+CU (Control Unit) instruction ko samajhta hai:
+ye add hai?
+print hai?
+load/store hai?
+🔹 C. Execute
+ALU operation karta hai
+Registers me values aati-jati hain
+Memory read/write hota hai
+Ye cycle har instruction ke liye repeat hota hai.
+
+5. Program uses memory (stack + heap)
+🔹 Stack
+Functions ke variables
+Return addresses
+Very fast
+Automatic allocation
+🔹 Heap
+Dynamic memory (malloc, new)
+Programmer controlled
+Slower than stack
+
+Simple: A program runs through compilation, loading, and execution.
+First, the compiler converts source code into machine code.
+Then the OS loader loads it into RAM and sets up stack/heap.
+The CPU then executes the machine instructions using the Fetch-Decode-Execute cycle.
+During execution, the program interacts with memory and OS through system calls.
+Finally, when execution ends, the OS frees all resources.
+
+
+****** C-Tokens: -> Keyword, Identifiers, Literals(Constants), Operators
+
+
+Keywords: Keywords are reserved words in C whose meaning is already defined by the language.
+We cannot use them as variable names or identifiers.
+
+auto,break,case ,char ,const ,continue, default ,do,double ,else,enum ,extern,float ,for ,goto,if,int,long,register ,return,short ,signed ,sizeof,static,struct,switch,typedef,union,unsigned,void ,volatile,while.
+
+Identifiers are the names we give to variables, functions, arrays, structures, etc.which are manually defined by us.
+Naming rule:
+Can contain:
+alphabets (a–z, A–Z)
+digits (0–9)
+underscore (_)
+
+Cannot start with a digit
+Correct: age1
+Wrong: 1age
+
+Cannot use a keyword as identifier
+Wrong: int return = 5;
+
+Case-sensitive
+Age ≠ age
+
+No spaces
+Wrong: total amount
+
+No special symbols
+Wrong: a%b, name!
+
+Literals are fixed constant values written directly in the program.
+Their value run-time par change nahi hota.
+
+Operators are symbols used to perform operations on variables and values.
+
+-89%20 = 20 me aisa kya multiply kare ki value less than -89 mile , so 20 *-5 = -100, so -100 me kitna add kare ki -89 aaye i.e 11 , so final output answer is 11.
+
+-5%3 = 3*-2 will give -6, so if we add 1 to -6 it gives -5. so final answer is 1.

@@ -1,0 +1,212 @@
+Pointer = Memory address ko store karne wala variable.
+Normal variable → value store kare
+Pointer → us value ka address store kare
+
+Memory me variable kaise banta hai?
+int a = 10;
+Memory me kuch aisa banega:
+Address -> 1000 & Value -> 10
+'a' variable ka address maan le 1000 hai.
+
+Pointer kaise banate hain?
+int *p;
+p → pointer hai
+jo int type ka address store karega
+Ab hum address assign karte hain:
+p = &a;
+&a means → “a ka address”
+
+char * q=> pointer q, which stores address of a character
+
+*** Dereferencing (most important)
+If you want value through pointer:
+printf("%d", *p);
+*p -> value at address stored in p i.e it will give 10.
+
+Interview lines (must memorize)
+1. Pointer stores address of another variable.
+2. & gives address, * gives value at that address.
+3. Pointer increases performance, supports dynamic memory, arrays, functions, structures.
+4. Pointer is a feature that makes C low-level & hardware-near language.
+
+Pointer ka use KYA HAI? (Real purpose)
+✔ 1. Dynamic memory allocation (malloc, free)
+✔ 2. Arrays ko efficiently handle karna
+✔ 3. Functions me pass-by-reference
+✔ 4. Strings handle karna
+✔ 5. Data-structures (linked list, tree, graph)
+✔ 6. System programming, drivers, OS
+
+
+Example1: Pass by reference
+void change(int *x){
+    *x = 100;
+}
+
+int main(){
+    int a = 10;
+    change(&a);
+    printf("%d", a);
+}
+
+Output → 100
+Because function ko address diya tha → direct original variable change ho gaya.
+
+Example2: Pointer + Array (Arrays pointer jaisa behave karte hain).
+int arr[3] = {10,20,30};
+int *p = arr;
+
+Array ka naam actually ek pointer jaisa behave karta hai.Matalb arr = arr[0] // true return karega.
+
+Assume memory:
+Address	Value
+1000	   10
+1004	   20
+1008	   30
+
+Toh:
+arr = 1000 (address of arr[0])
+&arr[0] = 1000
+arr + 1 = 1004
+*(arr + 1) = 20
+
+now if pointer points to array: int *p = arr;
+Now:
+p = 1000
+*p = 10
+*(p + 1) = 20
+p[2] = 30 (same as arr[2])
+
+▶ Pointer array ka base address hold karta hai.
+
+
+Example3: Pointer Arithmetic (very very important)
+Pointer me +1, -1 lagana normal number jaisa nahi hota.
+Kyuki pointer data type ke size ke hisaab se shift hota hai.
+int *p; // int = 4bytes, so agr p = 1000 and then p++;
+then p becomes 1004;
+
+Type	          Size	               p++ increment
+char	            1 byte	                +1
+int              4 bytes                 	+4
+float	          4 bytes	                  +4
+double	           8 bytes	              +8
+
+Example4:
+int arr[] = {10,20,30};
+int *p = arr;
+
+p++;  // moves to next element
+printf("%d", *p); // 20
+
+
+Example5: NULL Pointer(safe pointer)
+NULL pointer = pointer that points to nowhere.
+int *p = NULL;
+Matlab p = 0; (special address)
+
+Kyun use hota hai?
+Safe: pata hota hai pointer kisi garbage jagah nahi hai.
+Check kar sakte ho before use:
+if(p != NULL) {
+    *p = 10;
+}
+Real-world use:
+malloc fail ho jaye
+pointer ko initialize karna ho
+function return me error indicate karna ho
+
+
+Wild Pointer (VERY dangerous)
+Ye pointer jisko tumne initialize nahi kiya.
+Example:
+int *p; // garbage address
+*p = 10;   // CRASH
+
+Because p = ? (unknown address)
+Tum us unknown address ko modify karne ki try karo ge → segmentation fault.
+Interview definition:
+Wild pointer = uninitialized pointer that points to random garbage memory.
+
+So always initialize: int *p = NULL;
+
+Example6: DOuble POinter(Pointer to POinter)
+Double pointer = pointer that stores address of another pointer.
+int a = 5;
+int *p = &a;
+int **q = &p;
+
+Diagram:
+a = 5      (value)
+p = &a     (address of a)
+q = &p     (address of p)
+
+Memory visualize:
+Var	             Stores
+a	                 5
+p	                1000 (address of a)
+q	                2000 (address of p)
+
+To access: *p    // value of a = 5
+**q   // value of a = 5 (through p)
+
+Where double pointer used?
+
+✔ Dynamic 2D arrays
+✔ Linked lists (head pointer change karna)
+✔ Function me pointer modify karna
+✔ Pointer arrays
+
+
+Example7:
+void modify(int **ptr){
+    **ptr = 200;
+}
+
+int main(){
+    int a = 10;
+    int *p = &a;
+    modify(&p);
+    printf("%d", a); // 200
+}
+
+
+//modify(&p); => &p → address of pointer p
+Not the address of a. The address of the pointer variable itself. Maan lo p ka address hai: 0x2000.
+ptr points to p
+*ptr gives you p (which stores &a)
+**ptr gives you a
+So **ptr = 200; directly modifies variable a.
+
+a:     [10]         at 0x1000
+p:     [0x1000]     at 0x2000
+ptr:   [0x2000]     only inside modify()
+
+Inside modify:
+ptr → 0x2000 → p
+*ptr → p → 0x1000 → a
+**ptr → a → 10 → overwritten to 200
+Function ko pointer-ka-address diya
+↓
+Function ne indirectly pointer ke through a ko modify kar diya
+↓
+Output = 200
+
+
+
+int x;
+char y;
+float z;
+printf("%d", sizeof(x)); => 4 size of int
+printf("%d", sizeof(y)); => 1 size of char
+printf("%d", sizeof(z)); => 4 size of float
+
+
+int *p;
+char *y;
+float *z;
+
+printf(sizeof(p), sizeof(y), sizeof(z)); 
+for 32-bit system => 4 4 4
+for 64-bit system => 8 8 8
+but agr hota printf(sizeof(z)); => 4 bcz size of float is also 4 byte.

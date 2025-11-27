@@ -43,9 +43,22 @@ strict syntax discipline
 
 Different types of data types:
 
-Primitive -> Int, Float, Char, Void
-Derived -> Array, Pointers, Strings
-User Defined Data types -> Structure, Union, Enum, Typedef
+Basic Data type-> int, char, float, double
+Derived Data type -> array, pointer, Structure, Union
+Enumeration data type -> Enum
+Void data type -> void
+
+ Types & Size:
+ int => 2 bytes
+ char => 1 bytes
+ float => 4 bytes
+ double => 8 bytes
+ long double => 10 bytes
+
+-> %lf -> double
+-> %Lf -> long double
+-> %u -> short unsigned integer
+-> %x -> hexadecimal integer
 
 Integer -> short, int, long int, long long int
 Floating -> float, double, long double
@@ -134,3 +147,13 @@ output: -127 according to cyclic way bcz by default it is signed char , so range
 Example3:
 char x = 258;
 printf("%d",x); => 2
+
+
+
+Header file:
+1) stdio.h -> standard I/O , h is the extension means it is a header just like .pdf , .exe etc. It is imported at the strating of C file, the defination of printf, scanf is present inside this, so to use these we need to import it. #include<stdio.h>.
+
+2) math.h => has functions related to math like sqrt, max, min etc.
+3) string.h -> has functions related to string like concat, len etc.
+
+main() is the library function of c language and it is necesaary to write it to run the c program. It is the starting of the execution of c program.

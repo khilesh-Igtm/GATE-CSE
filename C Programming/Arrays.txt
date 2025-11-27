@@ -1,0 +1,52 @@
+Array = same type ke variables ka group, jo continuous memory me store hote hain.
+
+int arr[5]; =>5 integers ek saath memory me line-by-line store honge.
+
+arr koi element nahi hai.
+arr = पहले element का address.
+
+arr = 1000  (memory address)
+arr[0] ka address = 1000
+C me array ka index 0 se isliye start hota hai kyunki array ka naam first element ka exact address hota hai.
+Index 0 ka matlab hota hai “base address se zero distance”.
+Agar index 1 hota to first element tak pahunchne ke liye extra offset lagta, jo inefficient hota.
+
+Formula: address(arr[i]) = arr + (i * size_of_each_element)
+Sabse phele wale array ke element ke address ko hi base address of array bolte hai.
+
+int arr[5];
+printf("%p", arr);
+printf("%p", &arr[0]);
+👉 Both give same address
+👉 Because arr points to first element
+
+Array out of bound kya hota hai?"
+arr[10] = 5;   // ❌ undefined behavior
+
+
+Why Array store same data types element?
+Array ka purpose hi hai same-type continuous memory block banana.
+👉 Har element ka size fixed hona chahiye, taki indexing work kare.
+
+Example:
+int arr[3]
+Each int = 4 bytes
+So addresses:
+
+1000
+1004
+1008
+→ CPU easy calculate:
+base + index * size
+
+Agar data types different ho jaye:
+
+1000 → int (4 byte)
+1004 → char (1 byte)
+1005 → float (4 byte)
+
+🔹 Size alag-alag ho gaya
+🔹 Indexing formula toot gaya
+🔹 CPU address calculate nahi kar paayega
+Isliye arrays are homogeneous = same data type.
+

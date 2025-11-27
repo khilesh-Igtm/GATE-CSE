@@ -151,8 +151,7 @@ Now the program is ready for execution.
 
 Loader loads the program into RAM
 Program disk me pada hota hai.
-Run karte hi OS ka loader:
-program ko RAM me copy karta hai
+Run karte hi OS ka loader: program ko RAM me copy karta hai
 stack, heap, code segment, data segment set karta hai
 required libraries (printf, malloc) load karta hai
  CPU ke liye RAM hi actual workspace hota hai.
@@ -232,3 +231,28 @@ Operators are symbols used to perform operations on variables and values.
 -89%20 = 20 me aisa kya multiply kare ki value less than -89 mile , so 20 *-5 = -100, so -100 me kitna add kare ki -89 aaye i.e 11 , so final output answer is 11.
 
 -5%3 = 3*-2 will give -6, so if we add 1 to -6 it gives -5. so final answer is 1.
+
+goto: goto ek jump statement hai jo program execution ko directly kisi labelled statement par bhej deta hai.
+Example: #include <stdio.h>
+
+int main() {
+    printf("A\n");
+    goto jump;
+    printf("B\n");
+
+jump:
+    printf("C\n");
+
+    return 0;
+}
+
+output : A
+C
+Because goto jump; ne flow ko label jump: par bhej diya.It is useful for breaking out of multiple nested loops or for unified error handling. But it is discouraged in general programming because it makes code hard to read, understand, and maintain
+
+Difference between switch-case and if-else conditional statement:
+
+If-else can check complex conditions and support all data types. Switch only compares a single variable with constant values and supports only int/char/enums. Switch is faster due to jump-table, cleaner for menu-type programs, but less flexible than if-else.
+
+Difference between for loop and while loop:
+Use a for-loop when the number of iterations is known and all loop components fit naturally together. Use a while-loop when iterations are unknown and depend on a condition. For-loop is compact; while-loop is more flexible

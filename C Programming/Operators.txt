@@ -203,13 +203,16 @@ for XOR case -> if both the bits are different then 1 , if both bits are same th
 
 “Sir, left shift multiplies the number by 2 for every shift.
 So a << b is equal to a multiplied by 2 power b.”
--> left shift=> a<<b => a * 2^b means shift a , b number of times.
+-> left shift=> a<<b => a * 2^b means shift binary of a to the left side b number of times.
 10<<1 = 10 * 2^ 1 = 20
 10<<2 = 10 * 2^2 = 40
 In binary format -> 10 = 1010 , then 1010 << 1 = 10100 i.e 20
 1010 << 2 = 101000 i.e 40
 
 Now for doing right shift, we do 10 >> 2 => 10 / 2^2
+
+
+GATE me basically compiler 2 byte ka hota hai matlab 16 bits, so humne binary representation bhi 16 bits me karna hoga , let say 5 << 3 hai too hume 5 ka binary version 16 bits me represent karna hoga 0000000000000101. 
 
 
 2’s Complement kya hota hai?
@@ -250,3 +253,10 @@ Ye 11111011 hi -5 ka 2’s complement binary hai.
 
 okay and agr -2 ka nikalna hoo too  -2 => 0010 then flip it 1101
 then add +1 too right most , 1+1 = 0 and carrry will be one , so it will gives 1110
+
+
+Floor() -> it returns nearest smaller integer of input.
+Example-> Floor(6.1) => 6 , Floor(6.9) => 6 , Floor(-3.2) = -4
+
+Ceil -> it returns nearest greater integer of input.
+Example -> Ceil(6.1) => 7, Ceil(6.9) => 7, Ceil(-3.2) => -3
